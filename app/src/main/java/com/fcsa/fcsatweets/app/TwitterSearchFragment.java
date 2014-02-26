@@ -61,11 +61,8 @@ public class TwitterSearchFragment extends ListFragment {
         initLayout();
         int layout = R.layout.list_item_twittersearch;
 
-        String searchQuery = (String)getArguments().getString(EXTRA_SEARCH_QUERY);
+        String searchQuery = getArguments().getString(EXTRA_SEARCH_QUERY);
         new FetchBearerTokenTask2().execute(searchQuery);
-
-        setListAdapter(new TwitterSearchAdapter(getActivity(), layout, statusesList) );
-
     }
 
 //    @Override
@@ -110,7 +107,7 @@ public class TwitterSearchFragment extends ListFragment {
     {
         public TwitterSearchAdapter(FragmentActivity activity, int layout, Statuses statuses)
         {
-            super(getActivity(),layout, (List<Status>) statuses);
+            super(getActivity(),layout, statuses.mStatuses);
         }
 
         @Override
